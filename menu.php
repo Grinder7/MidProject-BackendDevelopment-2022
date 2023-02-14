@@ -22,7 +22,7 @@
   
   <div class="kotak" id = "menu1">
     <h1 class = "text-uppercase"><b>Hello, </b></h1>
-    <a class="btn btn-outline-primary" href="index.php" role="button" style = "width: 30%">Log Out</a>
+    <button class="btn btn-outline-primary" href="index.php" type = "submit" style = "width: 30%">Log Out</button>
   </div>
 
   <div class="kotak" id = "menu2">
@@ -30,7 +30,7 @@
     <input type = "text" placeholder = "Name" class = "inputN" name = "taskName"\>
     <label style="margin-left : 4%; margin-right : 1%">Deadline : </label>
     <input type = "date" placeholder = "Deadline" class = "inputN" name = "deadline"\>
-    <a class="btn btn-primary" role="button" style = "width: 30%">Create Task</a> 
+    <button class="btn btn-primary" type = "submit" style = "width: 30%">Create Task</button> 
   </div>
 
   <div class = "kotak" id = "menu3">
