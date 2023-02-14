@@ -19,21 +19,49 @@
 </head>
 
 <body>
-  <div class="text-center kotak login">
-    <h1 style="margin-bottom: 50px" ><b>LOG IN</b></h1>
-    
-    <input placeholder = "Username" class = "inputM"\>
-    <input placeholder = "Password" class = "inputM"\>
+  <div class="text-center kotak login" id="formLogin">
+    <form action="./database/account.php" method="POST">
 
-    <a class="btn btn-outline-primary"` href="menu.php" role="button" style = "width: 180px">Log in</a>
-    <p class ="mb-0">-------------------- or --------------------</p>
-    <a class="btn btn-primary"  href="register.php"  role="button" style = "width: 180px">Sign Up</a> 
+      <h1 class="mb-3"><b>LOG IN</b></h1>
+      <input type="text" placeholder="Username" class="inputM" name="luname">
+      <input type="password" placeholder="Password" class="inputM" name="lpass">
+
+      <button type="submit" class="btn btn-outline-primary" style="width: 60%">Log in</button>
+      <p class="mb-0">-------------------- or --------------------</p>
+      <a class="btn btn-primary" role="button" style="width: 60%" id="btnRegister">Sign Up</a>
+    </form>
+  </div>
+  <div class="text-center kotak register" id="formRegister">
+    <form action="./database/account.php" method="POST">
+      <h1 class="mb-3"><b>REGISTER</b></h1>
+      <input class="mt-1 inputM" type="text" placeholder="Name" name="rname" id="">
+      <input class="mt-1 inputM" type="text" placeholder="Username" name="runame" id="">
+      <input class="mt-1 inputM" type="password" placeholder="Password" name="rpass" id="">
+      <input class="mt-1 inputM" type="password" placeholder="Confirm Password" name="rcpass" id="">
+
+      <button class="btn btn-outline-primary mt-3" type="submit" style="width: 60%" onclick="location.href()">Sign Up</button>
+      <p class="mb-0">-------------------- or --------------------</p>
+      <a class="btn btn-primary" role="button" style="width: 60%" id="btnLogin">Log in</a>
+    </form>
   </div>
 
   <!-- MDB -->
   <script type="text/javascript" src="js/mdb.min.js"></script>
   <!-- Custom scripts -->
-  <script type="text/javascript"></script>
+  <script type="text/javascript">
+    let flogin = document.getElementById("formLogin");
+    let fregister = document.getElementById("formRegister");
+    let btnLogin = document.getElementById("btnLogin");
+    let btnRegister = document.getElementById("btnRegister");
+    btnRegister.addEventListener("click", () => {
+      flogin.style.display = "none";
+      fregister.style.display = "inline-block";
+    });
+    btnLogin.addEventListener("click", () => {
+      flogin.style.display = "inline-block";
+      fregister.style.display = "none";
+    });
+  </script>
 </body>
 
 </html>
