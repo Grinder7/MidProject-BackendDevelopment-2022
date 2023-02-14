@@ -20,14 +20,14 @@
 
 <body>
   <div class="text-center kotak login">
-    <h1 style="margin-bottom: 50px" ><b>LOG IN</b></h1>
+    <h1 style="margin-bottom: 15%" ><b>LOG IN</b></h1>
     
-    <input placeholder = "Username" class = "inputM"\>
-    <input placeholder = "Password" class = "inputM"\>
+    <input type = "text" placeholder = "Username" class = "inputM"\>
+    <input type = "password" placeholder = "Password" class = "inputM"\>
 
-    <a class="btn btn-outline-primary"` href="menu.php" role="button" style = "width: 180px">Log in</a>
+    <a class="btn btn-outline-primary" href="menu.php" role="button" style = "width: 60%">Log in</a>
     <p class ="mb-0">-------------------- or --------------------</p>
-    <a class="btn btn-primary"  href="register.php"  role="button" style = "width: 180px">Sign Up</a> 
+    <a class="btn btn-primary"  href="register.php"  role="button" style = "width: 60%">Sign Up</a> 
   </div>
 
   <!-- MDB -->

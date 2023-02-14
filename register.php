@@ -20,7 +20,16 @@
 
 <body>
   
+<div class="text-center kotak signup">
+    <h1 style="margin-bottom: 5%  " ><b>SIGN UP</b></h1>
+    
+    <input placeholder = "Name" class = "inputM"\>
+    <input placeholder = "Username" class = "inputM"\>
+    <input placeholder = "Password" class = "inputM"\>
+    <input placeholder = "Confirm Password" class = "inputM"\>
 
+    <a class="btn btn-outline-primary"` href="index.php" role="button" style = "width: 60%">Create Account</a>
+  </div>
 
   <!-- MDB -->
   <script type="text/javascript" src="js/mdb.min.js"></script>
