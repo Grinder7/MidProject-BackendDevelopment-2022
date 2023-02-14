@@ -19,7 +19,7 @@
 </head>
 
 <body>
-  <div class="text-center kotak login" id="formLogin">
+  <div class="text-center kotakf login" id="formLogin">
     <form action="./database/account.php" method="POST">
 
       <h1 class="mb-3"><b>LOG IN</b></h1>
@@ -31,7 +31,7 @@
       <a class="btn btn-primary" role="button" style="width: 60%" id="btnRegister">Sign Up</a>
     </form>
   </div>
-  <div class="text-center kotak register" id="formRegister">
+  <div class="text-center kotakf register" id="formRegister">
     <form action="./database/account.php" method="POST">
       <h1 class="mb-3"><b>REGISTER</b></h1>
       <input class="mt-1 inputM" type="text" placeholder="Name" name="rname" id="">

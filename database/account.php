@@ -38,12 +38,17 @@ if (isset($_POST['rname']) && isset($_POST['runame']) && isset($_POST['rpass']) 
         header("Location: ../index.php?error=Invalid username or password");
     } else {
         $row = mysqli_fetch_assoc($result);
+        var_dump($row);
         $checkPass = password_verify($lpass, $row['password']);
         if ($checkPass) {
             session_start();
-            $_SESSION['user_id'] = $row['user_id'];
-            $_SESSION['name'] = $row['name'];
+            $_SESSION['uid'] = $row['uid'];
+            $_SESSION["name"] = $row["name"];
+            echo "Session started <br>";
+            var_dump($row['name']);
+            var_dump($_SESSION['name']);
             mysqli_close($conn);
+            // die();
             header("Location: ../menu.php");
         } else {
             header("Location: ../index.php?error=Invalid username or password");

@@ -1,3 +1,9 @@
+<?php
+
+session_start();
+// echo "<script>console.log('" . $_SESSION['name'] . "')</script>";
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,30 +21,30 @@
   <!-- MDB -->
   <link rel="stylesheet" href="css/mdb.min.css" />
   <!-- Personal Style -->
-  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-  
-  <div class="kotak" id = "menu1">
-    <h1 class = "text-uppercase"><b>Hello, </b></h1>
-    <button class="btn btn-outline-primary" href="index.php" type = "submit" style = "width: 30%">Log Out</button>
+
+  <div class="kotak" id="menu1">
+    <h1 class="text-uppercase"><b>Hello,<?php echo " " . $_SESSION['name'] ?> </b></h1>
+    <button class="btn btn-outline-primary" href="index.php" type="submit" style="width: 30%">Log Out</button>
   </div>
 
-  <div class="kotak" id = "menu2">
+  <div class="kotak" id="menu2">
     <h1>Create Task</h1>
-    <input type = "text" placeholder = "Name" class = "inputN" name = "taskName"\>
+    <input type="text" placeholder="Name" class="inputN" name="taskName" \>
     <label style="margin-left : 4%; margin-right : 1%">Deadline : </label>
-    <input type = "date" placeholder = "Deadline" class = "inputN" name = "deadline"\>
-    <button class="btn btn-primary" type = "submit" style = "width: 30%">Create Task</button> 
+    <input type="date" placeholder="Deadline" class="inputN" name="deadline" \>
+    <button class="btn btn-primary" type="submit" style="width: 30%">Create Task</button>
   </div>
 
-  <div class = "kotak" id = "menu3">
+  <div class="kotak" id="menu3">
     <h1>Ongoing Tasks</h1>
 
   </div>
 
-  <div class = "kotak" id = "menu4">
+  <div class="kotak" id="menu4">
     <h1>Finished Tasks</h1>
 
   </div>
