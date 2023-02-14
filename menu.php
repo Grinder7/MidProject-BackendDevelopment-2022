@@ -20,7 +20,28 @@
 
 <body>
   
+  <div class="kotak" id = "menu1">
+    <h1 class = "text-uppercase"><b>Hello, </b></h1>
+    <button class="btn btn-outline-primary" href="index.php" type = "submit" style = "width: 30%">Log Out</button>
+  </div>
 
+  <div class="kotak" id = "menu2">
+    <h1>Create Task</h1>
+    <input type = "text" placeholder = "Name" class = "inputN" name = "taskName"\>
+    <label style="margin-left : 4%; margin-right : 1%">Deadline : </label>
+    <input type = "date" placeholder = "Deadline" class = "inputN" name = "deadline"\>
+    <button class="btn btn-primary" type = "submit" style = "width: 30%">Create Task</button> 
+  </div>
+
+  <div class = "kotak" id = "menu3">
+    <h1>Ongoing Tasks</h1>
+
+  </div>
+
+  <div class = "kotak" id = "menu4">
+    <h1>Finished Tasks</h1>
+
+  </div>
 
   <!-- MDB -->
   <script type="text/javascript" src="js/mdb.min.js"></script>
