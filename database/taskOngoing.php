@@ -11,10 +11,10 @@ for($x = 0; $x < mysqli_num_rows($result); $x++){
             <th>' . $arr[$x]["task_name"] . '</th>
             <th>' . $arr[$x]["deadline"] . '</th>
             <th class = "text-center">
-                <a role = "button" class = "me-2 text-reset">
+                <a role = "button" class = "me-2 text-reset doneButton">
                     <i class="fas fa-check"></i>
                 </a>
-                <a role = "button">
+                <a role = "button" class = "delButton">
                     <i class="fas fa-trash"></i>
                 </a>
             </th>

@@ -26,58 +26,61 @@ session_start();
 
 <body>
 
-<!-- Title -->
+  <!-- Title -->
   <div class="kotak" id="menu1">
     <h1 class="text-uppercase"><b>Hello,
-      <?php 
-        if(isset($_SESSION['name'])) echo " " . $_SESSION['name']; 
-        else header("Location: ../index.php");
-      ?>
-    </b></h1>
-    <a role = "button" class="btn btn-outline-primary" href="./database/logout.php" style="width: 30%">Log Out</a>
+        <?php
+        if (isset($_SESSION['name']))
+          echo " " . $_SESSION['name'];
+        else
+          header("Location: ../index.php");
+        ?>
+      </b></h1>
+    <a role="button" class="btn btn-outline-primary" href="./database/logout.php" style="width: 30%">Log Out</a>
   </div>
 
 
-<!-- Add Task -->
+  <!-- Add Task -->
   <div class="kotak" id="menu2">
     <h1>Create Task</h1>
-    <form action="./database/tasks.php" method = "POST">
+    <form action="./database/tasks.php" method="POST">
       <input type="text" placeholder="Name" class="inputN" name="taskName" \>
       <label style="margin-left : 4%; margin-right : 1%">Deadline : </label>
       <input type="date" placeholder="Deadline" class="inputN" name="deadline" \>
-      <button class="btn btn-primary" type="submit" name="newTask" value = "0" style="width: 30%" id = "nTask">Create Task</button>
+      <button class="btn btn-primary" type="submit" name="newTask" value="0" style="width: 30%" id="nTask">Create
+        Task</button>
     </form>
   </div>
 
 
-<!-- Ongoing Task -->
+  <!-- Ongoing Task -->
   <div class="kotak" id="menu3">
     <h1>Ongoing Tasks</h1>
-    <table style = "width : 90%">
-      <tr style = "border: 2px solid #3b71ca">
-        <th style = "width : 68%">Name</th>
-        <th style = "width : 20%">Deadline</th>
-        <th style = "width : 12%">Action</th>
+    <table style="width : 90%">
+      <tr style="border: 2px solid #3b71ca">
+        <th style="width : 68%">Name</th>
+        <th style="width : 20%">Deadline</th>
+        <th style="width : 12%">Action</th>
       </tr>
-      <?php 
-        include ("./database/taskOngoing.php")
-      ?>
+      <?php
+      include("./database/taskOngoing.php")
+        ?>
     </table>
   </div>
 
 
-<!-- Done Task -->
+  <!-- Done Task -->
   <div class="kotak" id="menu4">
     <h1>Finished Tasks</h1>
-    <table style = "width : 90%">
-      <tr style = "border: 2px solid #3b71ca">
-        <th style = "width : 68%">Name</th>
-        <th style = "width : 20%">Deadline</th>
-        <th style = "width : 12%">Action</th>
+    <table style="width : 90%">
+      <tr style="border: 2px solid #3b71ca">
+        <th style="width : 68%">Name</th>
+        <th style="width : 20%">Deadline</th>
+        <th style="width : 12%">Action</th>
       </tr>
-      <?php 
-        include ("./database/taskDone.php")
-      ?>
+      <?php
+      include("./database/taskDone.php")
+        ?>
     </table>
   </div>
 
@@ -97,14 +100,65 @@ session_start();
     // })
 
     let rbutton = document.getElementsByClassName("restoreButton");
-    for(let x = 0 ;x<rbutton.length;x++){
-      rbutton[x].addEventListener("click",()=>{
-        let tid = rbutton[x].getAttribute("value");
-        console.log(tid);
-        fetch(
+    for (let x = 0; x < rbutton.length; x++) {
+      rbutton[x].addEventListener("click", () => {
+        let data {
+          type = "res",
+          tid = rbutton[x].getAttribute("value")
+        };
+        fetch("./database/updateSQL.php", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json; charset=utf-8",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((response) => response.json())
+          .then((data) => console.log(data))
+          .catch((error) => console.error(error))
+      })
+    }
 
-          
-        )
+    let dbutton = document.getElementsByClassName("doneButton");
+    for (let x = 0; x < dbutton.length; x++) {
+      dbutton[x].addEventListener("click", () => {
+        let data {
+          type = "don",
+          tid = dbutton[x].getAttribute("value")
+        };
+        fetch("./database/updateSQL.php", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json; charset=utf-8",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((response) => response.json())
+          .then((data) => console.log(data))
+          .catch((error) => console.error(error))
+      })
+    }
+
+    let xbutton = document.getElementsByClassName("delButton");
+    for (let x = 0; x < xbutton.length; x++) {
+      xbutton[x].addEventListener("click", () => {
+        let data {
+          type = "del",
+          tid = xbutton[x].getAttribute("value")
+        };
+        let conf = confirm("Are you sure want to delete this taks?");
+        if(conf){
+          fetch("./database/updateSQL.php", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json; charset=utf-8",
+            },
+            body: JSON.stringify(data),
+          })
+            .then((response) => response.json())
+            .then((data) => console.log(data))
+            .catch((error) => console.error(error))
+        }
       })
     }
   </script>
