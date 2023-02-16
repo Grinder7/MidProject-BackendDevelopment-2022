@@ -56,5 +56,5 @@ if (isset($_POST['rname']) && isset($_POST['runame']) && isset($_POST['rpass']) 
     }
 } else {
 
-    header("Location: ../index.php?error=Please Login First, $luname, $lpass");
+    header("Location: ../index.php?error=Please Login First");
 }
