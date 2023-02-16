@@ -102,9 +102,9 @@ session_start();
     let rbutton = document.getElementsByClassName("restoreButton");
     for (let x = 0; x < rbutton.length; x++) {
       rbutton[x].addEventListener("click", () => {
-        let data {
-          type = "res",
-          tid = rbutton[x].getAttribute("value")
+        let data = {
+          type : "res",
+          tid : rbutton[x].getAttribute("value")
         };
         fetch("./database/updateSQL.php", {
           method: "POST",
@@ -114,7 +114,7 @@ session_start();
           body: JSON.stringify(data),
         })
           .then((response) => response.json())
-          .then((data) => console.log(data))
+          .then((data) => console.log(data), location.reload())
           .catch((error) => console.error(error))
       })
     }
@@ -122,9 +122,9 @@ session_start();
     let dbutton = document.getElementsByClassName("doneButton");
     for (let x = 0; x < dbutton.length; x++) {
       dbutton[x].addEventListener("click", () => {
-        let data {
-          type = "don",
-          tid = dbutton[x].getAttribute("value")
+        let data = {
+          type : "don",
+          tid : dbutton[x].getAttribute("value")
         };
         fetch("./database/updateSQL.php", {
           method: "POST",
@@ -134,7 +134,7 @@ session_start();
           body: JSON.stringify(data),
         })
           .then((response) => response.json())
-          .then((data) => console.log(data))
+          .then((data) => console.log(data), location.reload())
           .catch((error) => console.error(error))
       })
     }
@@ -142,9 +142,9 @@ session_start();
     let xbutton = document.getElementsByClassName("delButton");
     for (let x = 0; x < xbutton.length; x++) {
       xbutton[x].addEventListener("click", () => {
-        let data {
-          type = "del",
-          tid = xbutton[x].getAttribute("value")
+        let data = {
+          type : "del",
+          tid : xbutton[x].getAttribute("value")
         };
         let conf = confirm("Are you sure want to delete this taks?");
         if(conf){
@@ -156,8 +156,9 @@ session_start();
             body: JSON.stringify(data),
           })
             .then((response) => response.json())
-            .then((data) => console.log(data))
+            .then((data) => console.log(data), location.reload())
             .catch((error) => console.error(error))
+            
         }
       })
     }
