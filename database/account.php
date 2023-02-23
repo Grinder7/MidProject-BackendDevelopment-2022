@@ -22,10 +22,6 @@ if (isset($_POST['rname']) && isset($_POST['runame']) && isset($_POST['rpass']) 
             if (!$result) {
                 die("Can't connect to database");
             } else {
-                var_dump($rpass);
-                echo ("<br>");
-                var_dump($rcpass);
-                // die();
                 header("Location: ../index.php?error=Account created successfully");
             }
         }
