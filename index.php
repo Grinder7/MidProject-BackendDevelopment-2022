@@ -37,8 +37,8 @@ if (isset($_SESSION['user_id'])) {
           echo ('<div class="alertSuccess mb-3">' . $_GET['success'] . '</div>');
         }
         ?>
-        <input type="text" placeholder="Username" class="inputM" name="luname">
-        <input type="password" placeholder="Password" class="inputM" name="lpass">
+        <input type="text" placeholder="Username" class="inputM" name="luname" minlength = "3" maxlength = "15">
+        <input type="password" placeholder="Password" class="inputM" name="lpass" minlength = "8" maxlength = "20">
 
         <button type="submit" class="btn btn-outline-primary" style="width: 60%">Log in</button>
         <p class="mb-0">-------------------- or --------------------</p>
