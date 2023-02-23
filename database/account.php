@@ -7,25 +7,26 @@ if (isset($_POST['rname']) && isset($_POST['runame']) && isset($_POST['rpass']) 
     $runame = $_POST['runame'];
     $rpass = $_POST['rpass'];
     $rcpass = $_POST['rcpass'];
-    if ($rpass != $rcpass) {
-        header("Location: ../index.php?error=Password doesn't match");
-    }
-    $sql = "SELECT * FROM account WHERE username='$rname'";
-    $result = mysqli_query($conn, $sql);
-    if (!$result) {
-        die("Can't connect to database");
-    } else if (mysqli_num_rows($result) > 0) {
-        header("Location: ../index.php?error=Username already exists");
-    } else {
-        $row = mysqli_fetch_assoc($result);
-        $hashedPass = password_hash($rpass, PASSWORD_DEFAULT);
-        $sql = "INSERT INTO account (name, username, password) VALUES ('$rname', '$runame', '$hashedPass')";
+    if ($rpass == $rcpass && strlen($rcpass) == strlen($rpass)) {
+        $sql = "SELECT * FROM account WHERE username='$rname'";
         $result = mysqli_query($conn, $sql);
         if (!$result) {
             die("Can't connect to database");
+        } else if (mysqli_num_rows($result) > 0) {
+            header("Location: ../index.php?error=Username already exists");
         } else {
-            header("Location: ../index.php?error=Account created successfully");
+            $row = mysqli_fetch_assoc($result);
+            $hashedPass = password_hash($rpass, PASSWORD_DEFAULT);
+            $sql = "INSERT INTO account (name, username, password) VALUES ('$rname', '$runame', '$hashedPass')";
+            $result = mysqli_query($conn, $sql);
+            if (!$result) {
+                die("Can't connect to database");
+            } else {
+                header("Location: ../index.php?error=Account created successfully");
+            }
         }
+    } else {
+        header("Location: ../index.php?error=Password doesn't match");
     }
 } else if (isset($_POST['luname']) && isset($_POST['lpass'])) {
     $luname = $_POST['luname'];
@@ -38,15 +39,12 @@ if (isset($_POST['rname']) && isset($_POST['runame']) && isset($_POST['rpass']) 
         header("Location: ../index.php?error=Invalid username or password");
     } else {
         $row = mysqli_fetch_assoc($result);
-        var_dump($row);
         $checkPass = password_verify($lpass, $row['password']);
         if ($checkPass) {
             session_start();
             $_SESSION['uid'] = $row['uid'];
             $_SESSION["name"] = $row["name"];
             echo "Session started <br>";
-            var_dump($row['name']);
-            var_dump($_SESSION['name']);
             mysqli_close($conn);
             // die();
             header("Location: ../menu.php");
